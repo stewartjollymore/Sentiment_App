@@ -34,7 +34,7 @@ chunk_size = st.sidebar.slider("Chunk Size (characters):", min_value=100, max_va
 @st.cache_resource
 
 # Function to perform semantic chunking using experimental chunker
-def semantic_chunking(text, chunk_size, embeddings):
+def semantic_chunking(text):
     splitter = SemanticChunker(OpenAIEmbeddings(), 
                                breakpoint_threshold_type="percentile")
     splitter.create_documents([text])
@@ -43,7 +43,7 @@ def semantic_chunking(text, chunk_size, embeddings):
 if st.button("Run Sentiment Analysis"):
     with st.spinner("Running analysis..."):
         # Perform semantic chunking
-        chunks = semantic_chunking(user_input, chunk_size, embeddings)
+        chunks = semantic_chunking(user_input)
 
         st.subheader("Text Chunks")
         for i, chunk in enumerate(chunks):

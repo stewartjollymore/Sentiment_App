@@ -32,10 +32,6 @@ chunk_size = st.sidebar.slider("Chunk Size (characters):", min_value=100, max_va
 
 # Initialize OpenAI embeddings
 @st.cache_resource
-def get_embeddings():
-    return OpenAIEmbeddings()
-
-embeddings = get_embeddings()
 
 # Function to perform semantic chunking using experimental chunker
 def semantic_chunking(text, chunk_size, embeddings):

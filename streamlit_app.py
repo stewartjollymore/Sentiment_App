@@ -1,7 +1,7 @@
 import streamlit as st
 from transformers import pipeline
-from langchain_experimental.text_splitter import ExperimentalTextSplitter
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_experimental.text_splitter import SemanticChunker
+from langchain_openai.embeddings import OpenAIEmbeddings
 
 # Title of the application
 st.title("Sentiment Analysis with Semantic Chunking")
@@ -38,11 +38,9 @@ embeddings = get_embeddings()
 
 # Function to perform semantic chunking using experimental chunker
 def semantic_chunking(text, chunk_size, embeddings):
-    splitter = ExperimentalTextSplitter(
-        embeddings=embeddings,
-        chunk_size=chunk_size,
-        chunk_overlap=50
-    )
+    splitter = SemanticChunker(OpenAIEmbeddings(), 
+                               breakpoint_threshold_type="percentile")
+    splitter.create_documents([text])
     return splitter.split_text(text)
 
 if st.button("Run Sentiment Analysis"):

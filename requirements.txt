@@ -1,4 +1,5 @@
 streamlit
 langchain
 langchain_experimental
+langchain_openai
 transformers

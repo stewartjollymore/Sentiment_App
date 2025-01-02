@@ -2,6 +2,7 @@ import streamlit as st
 from transformers import pipeline
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain_openai.embeddings import OpenAIEmbeddings
+import pytorch
 
 # Title of the application
 st.title("Sentiment Analysis with Semantic Chunking")

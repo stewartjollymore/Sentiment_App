@@ -4,6 +4,8 @@ from langchain_experimental.text_splitter import SemanticChunker
 from langchain_openai.embeddings import OpenAIEmbeddings
 import torch
 
+api_key = st.secrets["OPENAI_API_KEY"]
+
 # Title of the application
 st.title("Sentiment Analysis with Semantic Chunking")
 
@@ -35,7 +37,7 @@ chunk_size = st.sidebar.slider("Chunk Size (characters):", min_value=100, max_va
 
 # Function to perform semantic chunking using experimental chunker
 def semantic_chunking(text):
-    splitter = SemanticChunker(OpenAIEmbeddings(), 
+    splitter = SemanticChunker(OpenAIEmbeddings(api_key=api_key ), 
                                breakpoint_threshold_type="percentile")
     splitter.create_documents([text])
     return splitter.split_text(text)

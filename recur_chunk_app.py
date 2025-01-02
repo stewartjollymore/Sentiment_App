@@ -3,7 +3,7 @@ from transformers import pipeline
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Title of the application
-st.title("Sentiment Analysis with Semantic Chunking")
+st.title("Sentiment Analysis with Recursive Chunking")
 
 # Sidebar for user input options
 st.sidebar.header("Model Options")

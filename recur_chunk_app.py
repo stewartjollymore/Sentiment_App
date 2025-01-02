@@ -11,7 +11,7 @@ st.sidebar.header("Model Options")
 # Select model from a predefined list of sentiment analysis models
 model_name = st.sidebar.selectbox(
     "Choose a Hugging Face Sentiment Model:",
-    ["distilbert-base-uncased-finetuned-sst-2-english", "bert-base-uncased-finetuned-sst-2"]
+    ["distilbert-base-uncased-finetuned-sst-2-english", "siebert/sentiment-roberta-large-english"]
 )
 
 # Load the selected model
